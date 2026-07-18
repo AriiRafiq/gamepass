@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email + Code Combiner</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Email + Code Combiner</h1>
+
+        <div class="input-section">
+
+            <div class="box">
+                <label for="accounts">
+                    Email + Password (one per line)
+                </label>
+
+                <textarea
+                    id="accounts"
+                    placeholder="email1@gmail.com:password1&#10;email2@gmail.com:password2"
+                ></textarea>
+            </div>
+
+            <div class="box">
+                <label for="codes">
+                    Codes (one per line)
+                </label>
+
+                <textarea
+                    id="codes"
+                    placeholder="CODE-001&#10;CODE-002"
+                ></textarea>
+            </div>
+
+        </div>
+
+        <button id="generateBtn">
+            Generate
+        </button>
+
+        <p id="message"></p>
+
+        <div id="results"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
