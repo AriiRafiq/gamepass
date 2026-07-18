@@ -115,7 +115,7 @@ generateBtn.addEventListener("click", () => {
         results.appendChild(row);
     }
 
-    allCombinedText = combinedLines.join("\n");
+    allCombinedText = combinedLines.join("\n\n");
 
     message.textContent =
         `Generated ${combinedLines.length} lines successfully.`;
