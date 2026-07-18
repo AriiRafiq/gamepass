@@ -9,10 +9,37 @@ const message = document.getElementById("message");
 
 let allCombinedText = "";
 
+function copyText(text) {
+    try {
+        const textArea = document.createElement("textarea");
+
+        textArea.value = text;
+
+        textArea.style.position = "fixed";
+        textArea.style.top = "-9999px";
+        textArea.style.left = "-9999px";
+
+        document.body.appendChild(textArea);
+
+        textArea.focus();
+        textArea.select();
+
+        document.execCommand("copy");
+
+        document.body.removeChild(textArea);
+
+        return true;
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+
 generateBtn.addEventListener("click", () => {
 
     results.innerHTML = "";
     message.textContent = "";
+
     copyAllBtn.style.display = "none";
 
     allCombinedText = "";
@@ -64,11 +91,11 @@ generateBtn.addEventListener("click", () => {
         copyButton.className = "copy-btn";
         copyButton.textContent = "Copy";
 
-        copyButton.addEventListener("click", async () => {
+        copyButton.addEventListener("click", () => {
 
-            try {
+            const success = copyText(combined);
 
-                await navigator.clipboard.writeText(combined);
+            if (success) {
 
                 copyButton.textContent = "Copied!";
 
@@ -76,7 +103,7 @@ generateBtn.addEventListener("click", () => {
                     copyButton.textContent = "Copy";
                 }, 1500);
 
-            } catch {
+            } else {
 
                 alert("Failed to copy.");
             }
@@ -98,11 +125,11 @@ generateBtn.addEventListener("click", () => {
     copyAllBtn.style.display = "inline-block";
 });
 
-copyAllBtn.addEventListener("click", async () => {
+copyAllBtn.addEventListener("click", () => {
 
-    try {
+    const success = copyText(allCombinedText);
 
-        await navigator.clipboard.writeText(allCombinedText);
+    if (success) {
 
         copyAllBtn.textContent = "Copied All!";
 
@@ -110,7 +137,7 @@ copyAllBtn.addEventListener("click", async () => {
             copyAllBtn.textContent = "Copy All";
         }, 1500);
 
-    } catch {
+    } else {
 
         alert("Failed to copy.");
     }
